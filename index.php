@@ -11,26 +11,33 @@
     <?php
     include "BBDD/productos.php";
     $productos = productos::ningunDato();
-    $verProductos = $productos->selectProducto();
+    // $verProductos = $productos->selectProducto();
+    $allProducts = $productos->selectProducto();
 
+    // var_dump($allProducts);
+    // foreach ($allProducts as $product) {
+    //     echo "$product[nombre] $product[cantidad] $product[precio]\n";
+    // }
     ?>
 
-    <?php
-        var_dump($verProductos);
-    while ($row = $verProductos->fetch()) {
-    ?>
-        <p><? echo $row["nombre"] ?> </p>
-        <p>
-            <? echo $row["precio"] ?>
-        </p>
-        <p>
-            <? echo $row["cantidad"] ?>
-        </p>
-
-    <?php
-    }
-    ?>
-
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+        </tr>
+        <tr>
+            <?php
+            foreach ($allProducts as $product) {
+            ?>
+                <td><?= $product["nombre"] ?></td>
+                <td><?= $product["cantidad"] ?></td>
+                <td><?= $product["precio"] ?>€</td>
+            <?php
+            }
+            ?>
+        </tr>
+    </table>
 </body>
 
 </html>

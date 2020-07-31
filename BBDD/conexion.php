@@ -9,7 +9,8 @@ class conexionBBDD
 
     public function conexion()
     {
-        $conectionString = "mysql:host = $this->servidor;dbname = $this->BD,charset=utf8";
+        $conectionString = "mysql:host=$this->servidor;dbname=$this->BD;charset=utf8";
+
         try {
             $this ->conect = new PDO($conectionString,$this->usuario,$this->password);
             $this->conect ->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

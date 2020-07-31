@@ -20,20 +20,25 @@ class productos extends conexionBBDD
         $con = $conexion->conexion();
 
         $select = $con->prepare('SELECT * FROM productos');
-        // var_dump($select);
-
-        // $select = $con->query("SELECT * FROM productos");
-        // $select->setFetchMode(PDO::FETCH_ASSOC);
-        // $select ->execute();
+        $select ->execute();
+        $mData=array();
 
         if(!$select) {
-            die("Error de consulta de ejecución, porque: ". print_r($con->errorInfo(),true) );
+            /* No conviene mostrar errores internos en producción*/
+            $mData["error"]="Error de consulta de ejecución, porque: ". $con->errorInfo()[2];
         }else {
-
-            return $select;
+            while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+                  $mData[] = $row;
+            }
         }
+        return $mData;
     }
 
+    public function insertarDatos() {
+        
+    }
+
+    //para realizar funciones donde no necesite pasar ninguna variable
     public function ningunDato() {
         return new self("","","");
     }
