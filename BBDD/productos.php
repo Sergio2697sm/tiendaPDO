@@ -6,40 +6,49 @@ class productos extends conexionBBDD
     public $cantidad;
     public $precio;
     public $id;
+    private $conexion;
 
-    public function __construct($nom, $cant, $pre)
+    public function __construct()
     {
-        $this->nombre = $nom;
-        $this->cantidad = $cant;
-        $this->precio = $pre;
+        $this->conexion = new conexionBBDD();
+        $this->conexion = $this->conexion->connect();
     }
 
     public function selectProducto()
     {
-        $conexion = new conexionBBDD();
-        $con = $conexion->conexion();
 
-        $select = $con->prepare('SELECT * FROM productos');
-        $select ->execute();
-        $mData=array();
+        $select = $this->conexion->prepare('SELECT * FROM productos');
+        $select->execute();
+        $mData = array();
 
-        if(!$select) {
+        if (!$select) {
             /* No conviene mostrar errores internos en producción*/
-            $mData["error"]="Error de consulta de ejecución, porque: ". $con->errorInfo()[2];
-        }else {
+            $mData["error"] = "Error de consulta de ejecución, porque: " . $this->conexion->errorInfo()[2];
+        } else {
             while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
-                  $mData[] = $row;
+                $mData[] = $row;
             }
         }
         return $mData;
     }
 
-    public function insertarDatos() {
+    public function insertarDatos($nom, $cant, $pre)
+    {
+        $this->nombre = $nom;
+        $this->cantidad = $cant;
+        $this->precio = $pre;
         
-    }
+        $insert = $this->conexion->prepare("INSERT INTO productos(nombre,cantidad,precio) VALUES (?, ?, ?)");
+        $insert->bindParam(1, $this->nombre);
+        $insert->bindParam(2, $this->cantidad);
+        $insert->bindParam(3, $this->precio);
 
-    //para realizar funciones donde no necesite pasar ninguna variable
-    public function ningunDato() {
-        return new self("","","");
+        $resultado = $insert->execute();
+
+        if ($resultado == 1) {
+            echo "Producto regitrado con exito";
+        } else {
+            echo "Error al registrar el producto";
+        }
     }
 }

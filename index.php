@@ -10,14 +10,8 @@
 <body>
     <?php
     include "BBDD/productos.php";
-    $productos = productos::ningunDato();
-    // $verProductos = $productos->selectProducto();
+    $productos = new productos();
     $allProducts = $productos->selectProducto();
-
-    // var_dump($allProducts);
-    // foreach ($allProducts as $product) {
-    //     echo "$product[nombre] $product[cantidad] $product[precio]\n";
-    // }
     ?>
 
     <table>
@@ -26,18 +20,34 @@
             <th>Cantidad</th>
             <th>Precio</th>
         </tr>
-        <tr>
-            <?php
-            foreach ($allProducts as $product) {
-            ?>
+        <?php
+        foreach ($allProducts as $product) {
+        ?>
+            <tr>
                 <td><?= $product["nombre"] ?></td>
                 <td><?= $product["cantidad"] ?></td>
                 <td><?= $product["precio"] ?>€</td>
-            <?php
-            }
-            ?>
-        </tr>
+            </tr>
+        <?php
+        }
+        ?>
     </table>
+
+    <form action="<?= $_SERVER["PHP_SELF"] ?>" method="POST">
+        <label>Nombre:</label>
+        <input type="text" name="nombre">
+        <label>Cantidad:</label>
+        <input type="number" name="cantidad">
+        <label>Precio:</label>
+        <input type="number" name="precio">
+        <input type="submit" value="insertar Producto" name="insertar">
+    </form>
+    <?php
+    if (isset($_POST["insertar"])) {
+        $nuevo_producto = new productos();
+        $nuevo_producto->insertarDatos($_POST["nombre"], $_POST["cantidad"], $_POST["precio"]);
+    }
+    ?>
 </body>
 
 </html>

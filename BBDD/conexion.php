@@ -7,24 +7,20 @@ class conexionBBDD
     private $password = "";
     private $conect;
 
-    public function conexion()
+    public function __construct()
     {
         $conectionString = "mysql:host=$this->servidor;dbname=$this->BD;charset=utf8";
 
         try {
-            $this ->conect = new PDO($conectionString,$this->usuario,$this->password);
-            $this->conect ->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-            // var_dump($this->conect);
-            // print_r($conexion);
-            // $this ->conect ->setAttribute(PDO::ATTR_CASE,PDO::CASE_LOWER);
-            // $this ->conect->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
-            return $this->conect;
-            // return $conexion;
-
+            $this->conect = new PDO($conectionString, $this->usuario, $this->password);
+            $this->conect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
+    public function connect()
+    {
+        return $this->conect;
+    }
 }
-
