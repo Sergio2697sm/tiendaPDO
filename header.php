@@ -1,3 +1,13 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+<header>
+<h1 class="text-center"><img src="/TiendaPDO/imagenes/logo.png" alt="logo"></h1>
+<?php 
+if($_SESSION) {
+?>
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Prueba PDO</a>
@@ -21,3 +31,8 @@
         </div>
     </nav>
 </div>
+<?php
+}
+?>
+
+</header>

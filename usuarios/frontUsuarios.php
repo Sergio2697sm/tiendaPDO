@@ -1,9 +1,7 @@
-<?php 
-    include "BBDD/usuarios.php";
+<?php
+include "BBDD/usuarios.php";
+include "header.php";
 ?>
-<header class="container-fluid d-flex justify-content-center align-items-center">
-    <h1 class="text-center"><img src="/TiendaPDO/imagenes/logo.png" alt="logo"></h1>
-</header>
 
 <main class="container-fluid d-flex flex-column justify-content-center align-items-center">
     <h1>Identificación Usuario</h1>
@@ -33,7 +31,6 @@ if (isset($_POST["login"]) && !empty($_POST["login"])) {
 }
 ?>
 
-
-<footer class="container-fluid d-flex justify-content-center align-items-center">
-    <h4>Todos los derechos reservados de Sergio Martínez Martínez</h4>
-</footer>
+<?php
+include "footer.php";
+?>

@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -15,10 +12,8 @@ session_start();
 <body>
 
     <?php
-    // include("header.php");
-    // include("productos/frontProductos.php");
-    include("usuarios/frontUsuarios.php");
 
+    include("usuarios/frontUsuarios.php");
     ?>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
