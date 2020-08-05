@@ -8,7 +8,7 @@ include "../BBDD/productos.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ver Productos</title>
     <link rel="stylesheet" href="../css/generar.css">
 </head>
 
@@ -52,18 +52,11 @@ include "../BBDD/productos.php";
                 </tbody>
             </table>
         </div>
+        <button class="btnInsertModal" data-toggle="modal" data-target="#exampleModal">Insertar Producto</button>
+        <?php
+        include "Insert_modal.php";
+        ?>
 
-        <h1>Insertar productos</h1>
-
-        <form action="<?= $_SERVER["PHP_SELF"] ?>" method="POST">
-            <label>Nombre:</label>
-            <input type="text" name="nombre">
-            <label>Cantidad:</label>
-            <input type="number" name="cantidad">
-            <label>Precio:</label>
-            <input type="number" name="precio">
-            <input type="submit" value="insertar Producto" name="insertar">
-        </form>
     </main>
     <?php
     //isset -> indica si el campo existe

@@ -58,7 +58,13 @@ main {
     margin-left: 5%;
     padding: 12px;
 } */
-
+.btnInsertModal {
+    padding: 10px;
+    border:2px solid red;
+    border-radius: 16px;
+    background-color: blue;
+    color:white
+}
 footer {
     color:white;
     grid-area: footer;
