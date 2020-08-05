@@ -54,7 +54,7 @@ class Usuarios extends conexionBBDD
         if (!$introducir) {
             echo "El usuario o la contraseña no coinciden";
         } else {
-            // echo "hola";
+            $_SESSION['username'] = $user;
             header("Location: /TiendaPDO/productos/frontProductos.php");
         }
     }

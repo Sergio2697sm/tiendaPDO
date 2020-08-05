@@ -4,6 +4,12 @@
     
  }
 
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+
  body {
     min-height: 100vh;
     height: 100vh;
@@ -20,7 +26,11 @@ header {
 }
 
 header img {
-    width: 15%;
+    width: 5%;
+}
+
+header nav {
+    color: white;
 }
 
 main {

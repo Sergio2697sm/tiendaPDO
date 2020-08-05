@@ -5,7 +5,7 @@ include "header.php";
 
 <main class="container-fluid d-flex flex-column justify-content-center align-items-center">
     <h1>Identificación Usuario</h1>
-    <div class="usuarios d-flex justify-content-center align-items-center ">
+    <div class="usuarios d-flex justify-content-center align-items-center">
         <form class="text-center w-100 p-2" method="post" action="" name="signin-form">
             <div class=" d-flex flex-column form-element py-4">
                 <input type="text" class="p-2 mr-2 ml-2 text-center" name="username" placeholder="Ingresa su usuario" required />
