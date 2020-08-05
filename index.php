@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,49 +8,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/generar.css">
 </head>
 
 <body>
+
     <?php
-    include "BBDD/productos.php";
-    $productos = new productos();
-    $allProducts = $productos->selectProducto();
+    // include("header.php");
+    // include("productos/frontProductos.php");
+    include("usuarios/frontUsuarios.php");
+
     ?>
 
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Cantidad</th>
-            <th>Precio</th>
-        </tr>
-        <?php
-        foreach ($allProducts as $product) {
-        ?>
-            <tr>
-                <td><?= $product["nombre"] ?></td>
-                <td><?= $product["cantidad"] ?></td>
-                <td><?= $product["precio"] ?>€</td>
-            </tr>
-        <?php
-        }
-        ?>
-    </table>
-
-    <form action="<?= $_SERVER["PHP_SELF"] ?>" method="POST">
-        <label>Nombre:</label>
-        <input type="text" name="nombre">
-        <label>Cantidad:</label>
-        <input type="number" name="cantidad">
-        <label>Precio:</label>
-        <input type="number" name="precio">
-        <input type="submit" value="insertar Producto" name="insertar">
-    </form>
-    <?php
-    if (isset($_POST["insertar"])) {
-        $nuevo_producto = new productos();
-        $nuevo_producto->insertarDatos($_POST["nombre"], $_POST["cantidad"], $_POST["precio"]);
-    }
-    ?>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

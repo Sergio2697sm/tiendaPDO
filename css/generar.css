@@ -1,0 +1,57 @@
+:root {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    
+ }
+
+ body {
+    min-height: 100vh;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-areas: "header" "main" "footer";
+    grid-template-rows: auto 1fr auto;
+ }
+
+
+header {
+    grid-area: header;
+    background-color: brown;
+}
+
+header img {
+    width: 15%;
+}
+
+main {
+    grid-area: main;
+    background-color:azure;
+}
+
+.usuarios {
+    background-color: #2A34C0;
+    width: 50rem;
+    height: 14rem;
+    border-radius:16px;
+}
+
+.form-element>input {
+    border-radius:7px;
+    border-color: brown;
+}
+
+/* .botonesIden {
+    border-radius:1px;
+}
+
+.botonesIden>button {
+    margin-left: 5%;
+    padding: 12px;
+} */
+
+footer {
+    color:white;
+    grid-area: footer;
+    background-color: brown;
+
+}
