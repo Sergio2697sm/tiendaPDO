@@ -10,7 +10,7 @@
 
 <body>
     <?php
-    include "BBDD/productos.php";
+    include "../BBDD/productos.php";
     $productos = new productos();
     $allProducts = $productos->selectProducto();
     ?>
