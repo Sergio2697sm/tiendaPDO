@@ -1,3 +1,6 @@
+<?php 
+    include "BBDD/usuarios.php";
+?>
 <header class="container-fluid d-flex justify-content-center align-items-center">
     <h1 class="text-center"><img src="/TiendaPDO/imagenes/logo.png" alt="logo"></h1>
 </header>
@@ -14,13 +17,23 @@
             </div>
 
             <div class="pt-2 botonesIden">
-            <button class="btn btn-primary" type="submit" name="login" value="login">Entrar</button>
-            <button class="btn btn-secondary" type="submit" name="login" value="login">Registrarse</button>
+                <form action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
+                    <button class="btn btn-primary" type="submit" name="login" value="login">Entrar</button>
+                    <button class="btn btn-secondary" type="submit" name="login" value="login">Registrarse</button>
+                </form>
             </div>
         </form>
     </div>
 </main>
 
+<?php
+if (isset($_POST["login"]) && !empty($_POST["login"])) {
+    $user = new Usuarios();
+    $user->introducirUsuario($_POST["username"], $_POST["password"]);
+}
+?>
+
+
 <footer class="container-fluid d-flex justify-content-center align-items-center">
-<h4>Todos los derechos reservados de Sergio Martínez Martínez</h4>
+    <h4>Todos los derechos reservados de Sergio Martínez Martínez</h4>
 </footer>

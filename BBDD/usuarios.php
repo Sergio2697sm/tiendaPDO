@@ -1,5 +1,5 @@
 <?php
-require_once "../BBDD/conexion.php";
+require_once "conexion.php";
 class Usuarios extends conexionBBDD
 {
     private $nombre;
@@ -48,13 +48,14 @@ class Usuarios extends conexionBBDD
         $this->usuario = $user;
         $this->password = $pass;
 
-        $introducir = $this->conexion->prepare("SELECT usuario,contrasena FROM usuarios WHERE usuario =$this->usuario AND contrasena = $this->password");
+        $introducir = $this->conexion->prepare("SELECT usuario,contrasena FROM usuarios WHERE usuario ='$this->usuario' AND contrasena = '$this->password'");
         $introducir->execute();
 
         if (!$introducir) {
             echo "El usuario o la contraseña no coinciden";
         } else {
-            header("../productos/frontProductos.php");
+            // echo "hola";
+            // header("productos/frontProductos.php");
         }
     }
 }
